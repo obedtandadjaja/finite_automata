@@ -113,6 +113,7 @@ $(document).ready(function() {
     }
     accepted.innerHTML = "";
     rejected.innerHTML = "";
+    current_delete = getCurrentDeleteAlphabet();
     for(x = 0; x < upper_bound; x++) {
       binaryString = ('0000000000'+toBinary(x)).slice(-10);
       current_state = current_delete;
@@ -132,6 +133,7 @@ $(document).ready(function() {
     }
     accepted.innerHTML = "";
     rejected.innerHTML = "";
+    current_delete = getCurrentDeleteAlphabet();
     for(x = 0; x < upper_bound; x++) {
       binaryString = toBinary(x);
       current_state = current_delete;
@@ -149,19 +151,21 @@ $(document).ready(function() {
     drawDiagram(nodes, links);
   });
 
+  function getCurrentDeleteAlphabet() {
+    for(i = 0; i < alphabet.length; i++) {
+      if(nodes_dictionary[alphabet[i]] != null) return alphabet[i];
+    }
+  }
   function drawDiagram(nodes, links) {
-    // create the model data that will be represented by Nodes and Links
     myDiagram.model = new go.GraphLinksModel(nodes, links);
   }
   function toBinary(int) {
     return (int >>> 0).toString(2);
   }
   function deleteNode(node) {
-    current_delete = node.data.key;
     temp1 = [];
     for(var i = nodes.length - 1; i >= 0; i--) {
       if(nodes[i].key != node.data.key) {
-        // nodes.splice(i, 1);
         temp1.push(nodes[i]);
       }
     }

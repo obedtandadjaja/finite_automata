@@ -126,6 +126,7 @@ $(document).ready(function() {
         rejected.innerHTML += binaryString+", ";
       }
     }
+    alert('Test done! Review the results below!');
   });
   evaluate2.addEventListener('click', function() {
     window.onerror=function(){
@@ -146,6 +147,7 @@ $(document).ready(function() {
         rejected.innerHTML += binaryString+", ";
       }
     }
+    alert('Test done! Review the results below!');
   });
   refresh.addEventListener('click', function() {
     drawDiagram(nodes, links);
